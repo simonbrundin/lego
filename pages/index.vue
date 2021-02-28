@@ -1,32 +1,30 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">lego</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <img class="lego-image" src="@/assets/lego_darth_wader.jpg" />
+    <input v-model="setNumber" type="text" />
+    <button @click="getLowestPrice(setNumber)">Hämta pris</button>
+    {{ lowestPrice }}
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      lowestPrice: '0',
+    };
+  },
+  computed: {
+    setNumber() {
+      return this.$store.state.setNumber;
+    },
+  },
+  methods: {
+    getLowestPrice(setNumber) {
+      return fetch();
+    },
+  },
+};
 </script>
 
 <style>
@@ -34,9 +32,14 @@ export default {}
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.container > * {
+  margin: 0 0 32px 0;
 }
 
 .title {
@@ -57,7 +60,7 @@ export default {}
   padding-bottom: 15px;
 }
 
-.links {
-  padding-top: 15px;
+.lego-image {
+  width: 200px;
 }
 </style>
